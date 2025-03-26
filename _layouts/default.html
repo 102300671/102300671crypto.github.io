@@ -1,17 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title }}</title>
-  <script type="text/javascript" async
-    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-  </script>
+  <!-- 增强移动端控制 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  
+  <!-- CTF专用SEO -->
+  <title>{{ page.title | default: site.title }} | CTF Crypto Solutions</title>
+  <meta name="description" content="CTF密码学挑战权威解法 - {{ page.description | default: '包含RSA、AES、椭圆曲线等加密算法的实战分析' }}">
+  <meta name="keywords" content="CTF, Cryptography, RSA, AES, 密码学挑战">
+  
+  <!-- 安全策略 -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src *;">
+
+  <!-- 异步加载数学支持 -->
+  {% if page.math %}
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_CHTML"></script>
+  {% endif %}
+  
+  <!-- 代码高亮 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
 </head>
 
 <body>
-  {{ content }}
-</body>
+  <nav aria-label="Main navigation">
+    {% include nav.html %}
+  </nav>
 
+  <main class="ctf-content">
+    <!-- 添加CTF专用内容结构 -->
+    <article class="crypto-challenge">
+      <header>
+        <h1>{{ page.challenge_name }}</h1>
+        <div class="metadata">
+          <span>Difficulty: {{ page.difficulty }}</span>
+          <span>Category: {{ page.category }}</span>
+        </div>
+      </header>
+      
+      {{ content }}
+    </article>
+  </main>
+
+  <!-- 暗黑模式切换 -->
+  <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+
+  <!-- 异步加载脚本 -->
+  <script>
+    // 主题切换逻辑
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+</body>
 </html>
