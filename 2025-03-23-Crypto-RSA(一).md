@@ -1,6 +1,5 @@
 ---
 layout: default
-permalink: /posts/Crypto-RSA
 ---
 
 # nssctf
