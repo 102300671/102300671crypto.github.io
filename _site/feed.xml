@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/102300671crypto.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/102300671crypto.github.io/" rel="alternate" type="text/html" /><updated>2025-03-27T15:21:48+08:00</updated><id>http://localhost:4000/102300671crypto.github.io/feed.xml</id><title type="html">Crypto</title><subtitle>Crypto</subtitle><entry><title type="html">Crypto-RSA(二)</title><link href="http://localhost:4000/102300671crypto.github.io/2025/03/26/Crypto-RSA(%E4%BA%8C).html" rel="alternate" type="text/html" title="Crypto-RSA(二)" /><published>2025-03-26T00:00:00+08:00</published><updated>2025-03-26T00:00:00+08:00</updated><id>http://localhost:4000/102300671crypto.github.io/2025/03/26/Crypto-RSA(%E4%BA%8C)</id><content type="html" xml:base="http://localhost:4000/102300671crypto.github.io/2025/03/26/Crypto-RSA(%E4%BA%8C).html"><![CDATA[<h1 id="nssctf">nssctf</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/102300671crypto.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/102300671crypto.github.io/" rel="alternate" type="text/html" /><updated>2025-03-27T16:03:20+08:00</updated><id>http://localhost:4000/102300671crypto.github.io/feed.xml</id><title type="html">Crypto</title><subtitle>Crypto</subtitle><entry><title type="html">Crypto-RSA(二)</title><link href="http://localhost:4000/102300671crypto.github.io/2025/03/26/Crypto-RSA(%E4%BA%8C).html" rel="alternate" type="text/html" title="Crypto-RSA(二)" /><published>2025-03-26T00:00:00+08:00</published><updated>2025-03-26T00:00:00+08:00</updated><id>http://localhost:4000/102300671crypto.github.io/2025/03/26/Crypto-RSA(%E4%BA%8C)</id><content type="html" xml:base="http://localhost:4000/102300671crypto.github.io/2025/03/26/Crypto-RSA(%E4%BA%8C).html"><![CDATA[<h1 id="nssctf">nssctf</h1>
 
 <h2 id="rsa2p1">[RSA2]P1</h2>
 
@@ -161,16 +161,21 @@ print(f</span><span class="sh">'</span><span class="s">c = {c}</span><span class
 <span class="n">n</span> <span class="o">=</span> <span class="mi">115637000420176820831322601039129424406844427046456738651883381559357542765613732363445112111006849040385859313572091386802534464534403117787314180179562651607533039692795522388596550968316951090748054495960090527479954143448774136390568881020918710834542819900918984139672802889774720153267841255456602500057</span>
 <span class="n">e</span> <span class="o">=</span> <span class="mi">65537</span>
 <span class="n">c</span> <span class="o">=</span> <span class="mi">98161406745910866780822530171878255235776133393411573803496865047700715941955255328757920065032397556905095591171977170479344602512244671081108703687450560269408412671849929423399172588599903975793985819498354819305128607934552101433664794909855378636055525016664559476808490723554481335856183927702549281730</span>
-<span class="n">a</span><span class="o">=</span><span class="nf">isqrt</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
-<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-    <span class="n">b</span><span class="o">=</span><span class="n">a</span><span class="o">*</span><span class="n">a</span><span class="o">-</span><span class="n">n</span>
-    <span class="k">if</span> <span class="nf">isqrt</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">==</span><span class="n">b</span><span class="p">:</span>
-        <span class="k">break</span>
-    <span class="n">a</span><span class="o">+=</span><span class="mi">1</span>
-<span class="n">p</span><span class="o">=</span><span class="n">a</span><span class="o">+</span><span class="nf">isqrt</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-<span class="n">q</span><span class="o">=</span><span class="n">a</span><span class="o">-</span><span class="nf">isqrt</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="n">sn</span><span class="o">=</span><span class="nf">isqrt</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">q</span><span class="o">=</span><span class="nf">next_prime</span><span class="p">(</span><span class="n">sn</span><span class="p">)</span>
+<span class="n">p</span><span class="o">=</span><span class="n">n</span><span class="o">//</span><span class="n">q</span>
 <span class="n">phi</span><span class="o">=</span><span class="p">(</span><span class="n">p</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">q</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">d</span> <span class="o">=</span> <span class="nf">inverse</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">phi</span><span class="p">)</span>
 <span class="n">m</span> <span class="o">=</span> <span class="nf">pow</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
 <span class="nf">print</span><span class="p">(</span><span class="nf">long_to_bytes</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
-</code></pre></div></div>]]></content><author><name></name></author><summary type="html"><![CDATA[nssctf]]></summary></entry></feed>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">p</code>,<code class="language-plaintext highlighter-rouge">q</code>接近</p>
+<ul>
+  <li>$n=p\times q$</li>
+  <li>$sn=\sqrt(n)$,$p&lt;sn&lt;q$</li>
+  <li><code class="language-plaintext highlighter-rouge">q=next_prime(p)</code></li>
+  <li><code class="language-plaintext highlighter-rouge">q=next_prime(n)</code></li>
+  <li><code class="language-plaintext highlighter-rouge">p=n//q</code></li>
+  <li>常规RSA解法</li>
+</ul>]]></content><author><name></name></author><summary type="html"><![CDATA[nssctf]]></summary></entry></feed>
