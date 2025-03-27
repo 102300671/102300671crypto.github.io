@@ -1,6 +1,6 @@
 ---
 layout: default
-permalink: /posts/Crypto-RSA
+title: Crypto-RSA(一)
 ---
 
 # nssctf
