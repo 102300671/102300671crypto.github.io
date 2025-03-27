@@ -36,14 +36,6 @@ markdown: kramdown
 kramdown:
   math_engine: mathjax
   
-navigation:
-  - title: 首页
-    url: /
-  - title: 关于
-    url: /about/
-  - title: 文章
-    url: /posts/
-
 
 # Exclude from processing.
 # The following items will not be processed, by default.
