@@ -4,10 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crypto-RSA(一)</title>
-    <link rel="stylesheet" href="/102300671crypto.github.io/assets/css/default.css">
-    <script type="text/javascript" async
-            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-    </script>
+    <link rel="stylesheet" href="/102300671crypto.github.io/assets/css/default.css"> 
+      <!-- 条件加载 -->
+      <script>
+MathJax = {
+  tex: {
+    inlineMath: [['$','$'], ['\\(','\\)']],  // 行内公式标识符
+    displayMath: [['$$','$$'], ['\\[','\\]']],  // 块级公式标识符
+    processEnvironments: true,  // 处理复杂公式环境
+    packages: {'[+]': ['ams', 'color']}  // 扩展AMS数学包
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],  // 忽略代码块
+    ignoreHtmlClass: 'tex2jax_ignore'  // 指定忽略渲染的CSS类
+  },
+  svg: {
+    fontCache: 'global',  // 字体缓存优化
+    scale: 1.05  // 显示缩放调整
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+    
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
 <body>
     <header>
@@ -156,11 +176,10 @@ print(f</span><span class="sh">'</span><span class="s">c = {c}</span><span class
 
 <p><code class="language-plaintext highlighter-rouge">p</code>,<code class="language-plaintext highlighter-rouge">q</code>接近</p>
 <ul>
-  <li>$n=p\times q$</li>
-  <li>$sn=\sqrt(n)$,$p&lt;sn&lt;q$</li>
-  <li><code class="language-plaintext highlighter-rouge">q=next_prime(p)</code></li>
-  <li><code class="language-plaintext highlighter-rouge">q=next_prime(n)</code></li>
-  <li><code class="language-plaintext highlighter-rouge">p=n//q</code></li>
+  <li>$n = p \times q$</li>
+  <li>$\text{sn} = \sqrt{n}$</li>
+  <li>$q = \mathrm{next\_prime}(p)$</li>
+  <li>$p = \left\lfloor \frac{n}{q} \right\rfloor$</li>
   <li>常规RSA解法</li>
 </ul>
 

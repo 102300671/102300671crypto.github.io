@@ -8,9 +8,11 @@
   <!-- 引入样式表等其他资源 -->
   <link rel="stylesheet" href="{{ "/assets/css/home.css" | relative_url }}">
   <!-- 引入MathJax库，如果你需要显示数学公式 -->
-  <script type="text/javascript" async
-    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-  </script>
+
+  {% if page.math %}  <!-- 条件加载 -->
+    {% include mathjax.html %}
+  {% endif %}
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
 
 <body>

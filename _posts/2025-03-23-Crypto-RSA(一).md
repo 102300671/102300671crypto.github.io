@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Crypto-RSA(一)
+math: true
+math_type: svg
 ---
 
 # nssctf
@@ -144,11 +146,10 @@ print(long_to_bytes(m))
 ```
 
 `p`,`q`接近
-- $n=p\times q$
-- $sn=\sqrt(n)$,$p<sn<q$
-- `q=next_prime(p)`
-- `q=next_prime(n)`
-- `p=n//q`
+- $n = p \times q$
+- $\text{sn} = \sqrt{n}$
+- $q = \mathrm{next\\_prime}(p)$
+- $p = \left\lfloor \frac{n}{q} \right\rfloor$
 - 常规RSA解法
 
-
+{% include_code "/nssctf/一/main1.py" lang=python lines=1-25 %}

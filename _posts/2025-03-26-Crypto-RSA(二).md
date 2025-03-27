@@ -2,6 +2,7 @@
 layout: default
 title: Crypto-RSA(二)
 math: true
+math_type: svg
 ---
 
 # nssctf

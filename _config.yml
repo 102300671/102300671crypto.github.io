@@ -35,6 +35,11 @@ plugins:
 markdown: kramdown
 kramdown:
   math_engine: mathjax
+  math_engine_opts:
+    output: svg  # 矢量图形模式
+    preview: false  # 禁用公式预览
+    tex_input: full  # 完整TeX语法支持
+
   
 
 # Exclude from processing.

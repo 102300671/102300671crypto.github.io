@@ -1,0 +1,19 @@
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$','$'], ['\\(','\\)']],  // 行内公式标识符
+    displayMath: [['$$','$$'], ['\\[','\\]']],  // 块级公式标识符
+    processEnvironments: true,  // 处理复杂公式环境
+    packages: {'[+]': ['ams', 'color']}  // 扩展AMS数学包
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],  // 忽略代码块
+    ignoreHtmlClass: 'tex2jax_ignore'  // 指定忽略渲染的CSS类
+  },
+  svg: {
+    fontCache: 'global',  // 字体缓存优化
+    scale: 1.05  // 显示缩放调整
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
