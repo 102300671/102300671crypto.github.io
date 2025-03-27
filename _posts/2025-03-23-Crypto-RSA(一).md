@@ -152,4 +152,4 @@ print(long_to_bytes(m))
 - $p = \left\lfloor \frac{n}{q} \right\rfloor$
 - 常规RSA解法
 
-{% include_code "/nssctf/一/main1.py" lang=python lines=1-25 %}
+{% include_code "nssctf/一/main1.py" lang=python lines=1-25 %}

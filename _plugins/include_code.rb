@@ -12,13 +12,16 @@ module Jekyll
       @lines = match[5]
     end
 
-    def render(context)
-      site = context.registers[:site]
-      base = File.realpath(site.source)
-      
-      # 路径安全校验
-      full_path = File.expand_path(@path, base)
-      raise "禁止访问父目录" unless full_path.start_with?(base)
+def render(context)
+  site = context.registers[:site]
+  base_path = File.realpath(site.source) # 获取项目绝对路径
+  
+  # 校验路径是否在项目目录内
+  full_path = File.expand_path(@path, base_path)
+  unless full_path.start_with?(base_path)
+    raise SecurityError, "禁止访问项目目录外的文件: #{@path}"
+  end
+    
 
       # 读取文件内容
       content = File.read(full_path)
