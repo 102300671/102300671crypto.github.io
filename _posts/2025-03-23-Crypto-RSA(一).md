@@ -3,9 +3,10 @@ layout: default
 title: Crypto-RSA(一)
 math: true
 math_type: svg
+highlight: true
 ---
 
-# nssctf
+## nssctf
 
 ## [RSA1]P1
 
@@ -40,6 +41,7 @@ n可分解
 {% include_code "nssctf/一/main4.py" lang=python %}
 
 `p`,`q`接近
+
 - $n = p \times q$
 - $\text{sn} = \sqrt{n}$
 - $q = \mathrm{next\\_prime}(p)$
