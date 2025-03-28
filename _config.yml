@@ -28,12 +28,21 @@ twitter_username:
 github_username:  "102300671"
 
 # Build settings
-theme: minima
+theme: 
 plugins:
   - jekyll-feed
 
 markdown: kramdown
+highlighter: rouge
 kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: highlight
+    span:
+      line_numbers: false  # 行内代码块是否显示行号
+    block:
+      line_numbers: true   # 代码块是否显示行号
+      start_line: 1        # 起始行号
   math_engine: mathjax
   math_engine_opts:
     output: svg  # 矢量图形模式

@@ -4,18 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }}</title>
-    <link rel="stylesheet" href="{{ "/assets/css/default.css" | relative_url }}"> 
+    <link rel="stylesheet" href="{{ "/assets/css/default.css" | relative_url }}">
+    <link rel="stylesheet" href="{{ "/assets/css/syntax.css" | relative_url }}">
+    {% include syntax-highlight.html %}
     {% if page.math %}  <!-- 条件加载 -->
       {% include mathjax.html %}
     {% endif %}
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
 <body>
     <header>
         <h1>{{ page.title }}</h1>
     </header>
     <main>
+      <div class="code-container">
         {{ content }}
+      </div>
     </main>
     <footer>
         <p>&copy; {{ site.time | date: '%Y' }} 版权所有</p>

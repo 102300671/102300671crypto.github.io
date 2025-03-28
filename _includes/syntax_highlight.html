@@ -1,0 +1,71 @@
+<!-- 生成语法高亮CSS的Liquid模板 -->
+{% if site.highlighter == 'rouge' %}
+  <link rel="stylesheet" href="{{ '/assets/css/syntax.css' | relative_url }}">
+  <style>
+    /* 行号列增强样式 */
+   .highlight .lineno {
+      color: #666;
+      border-right: 1px solid #ddd;
+      padding-right: 1em;
+      user-select: none;
+    }
+    /* 代码块响应式适配 */
+   .highlight pre {
+      overflow-x: auto;
+      padding: 1rem;
+    }
+  {% elsif site.highlighter == 'pygments' %}
+    <!-- 针对pygments高亮器的样式设置，示例为空，需根据实际情况添加 -->
+  {% endif %}
+  </style>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$','$'], ['\\(','\\)']],  // 行内公式标识符
+    displayMath: [['\\[', '\\]']],  // 块级公式标识符，优先使用[\[,\]]避免冲突
+    processEnvironments: true,  // 处理复杂公式环境
+    packages: {'[+]': ['ams', 'color']}  // 扩展AMS数学包，根据实际使用情况调整
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],  // 忽略代码块
+    ignoreHtmlClass: 'tex2jax_ignore'  // 指定忽略渲染的CSS类
+  },
+  svg: {
+    fontCache: 'global',  // 字体缓存优化
+    scale: 1.05  // 显示缩放调整
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+/* 代码块容器 */
+.code-snippet {
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  margin: 1em 0;
+}
+
+/* 代码头部样式 */
+.code-header {
+  background: #f6f8fa;
+  padding: 8px 12px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #e1e4e8;
+}
+
+/* 复制按钮样式 */
+.copy-button {
+  cursor: pointer;
+  color: #0366d6;
+}
+.copy-button:hover {
+  text-decoration: underline;
+}
+
+/* 文件路径显示 */
+.file-path {
+  font-size: 0.85em;
+  color: #586069;
+  padding: 8px 12px;
+  border-top: 1px solid #e1e4e8;
+}

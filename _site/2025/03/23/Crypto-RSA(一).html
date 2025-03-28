@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crypto-RSA(一)</title>
-    <link rel="stylesheet" href="/102300671crypto.github.io/assets/css/default.css"> 
+    <link rel="stylesheet" href="/102300671crypto.github.io/assets/css/default.css">
+    <link rel="stylesheet" href="/102300671crypto.github.io/assets/css/syntax.css">
       <!-- 条件加载 -->
       <script>
 MathJax = {
@@ -27,31 +28,32 @@ MathJax = {
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 
     
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
 <body>
     <header>
         <h1>Crypto-RSA(一)</h1>
     </header>
     <main>
+      <div class="code-container">
         <h1 id="nssctf">nssctf</h1>
 
 <h2 id="rsa1p1">[RSA1]P1</h2>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">Crypto.Util.number</span> <span class="kn">import</span> <span class="n">inverse</span><span class="p">,</span><span class="n">long_to_bytes</span>
+<div class="code-snippet" data-lang="python">
+  <div class="code-header">
+    <span class="file-name">main1.py</span>
+    <span class="copy-button" onclick="copyCode(this)">复制</span>
+  </div>
+  <pre><code class="language-python"><span class="kn">from</span> <span class="n">Crypto.Util.number</span> <span class="kn">import</span> <span class="n">inverse</span><span class="p">,</span><span class="n">long_to_bytes</span>
 <span class="sh">'''</span><span class="s">
 flag = b</span><span class="sh">'</span><span class="s">NSSCTF{******}</span><span class="sh">'</span><span class="s">
-
 p = getPrime(512)
 q = getPrime(512)
 n = p*q
 e = 65537
 phi = (p-1)*(q-1)
-
 m = bytes_to_long(flag)
-
 c = pow(m, e, n)
-
 print(f</span><span class="sh">'</span><span class="s">p = {p}</span><span class="sh">'</span><span class="s">)
 print(f</span><span class="sh">'</span><span class="s">q = {q}</span><span class="sh">'</span><span class="s">)
 print(f</span><span class="sh">'</span><span class="s">e = {e}</span><span class="sh">'</span><span class="s">)
@@ -66,8 +68,26 @@ print(f</span><span class="sh">'</span><span class="s">c = {c}</span><span class
 <span class="n">n</span><span class="o">=</span><span class="n">p</span><span class="o">*</span><span class="n">q</span>
 <span class="n">m</span> <span class="o">=</span> <span class="nf">pow</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
 <span class="n">flag</span> <span class="o">=</span> <span class="nf">long_to_bytes</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
-</code></pre></div></div>
+<span class="nf">print</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span></code></pre>
+  <div class="file-path" title="nssctf/一/main1.py">
+    <svg class="octicon" aria-hidden="true" width="12" height="12">
+      <use xlink:href="#file-icon" />
+    </svg>
+    nssctf/一/main1.py
+  </div>
+</div>
+<script>
+  function copyCode(btn) {
+    const codeBlock = btn.parentNode.nextElementSibling;
+    const range = document.createRange();
+    range.selectNode(codeBlock);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+    btn.textContent = '已复制!';
+    setTimeout(() => btn.textContent = '复制', 2000);
+  }
+</script>
 
 <p>常规RSA解法:</p>
 
@@ -80,7 +100,12 @@ print(f</span><span class="sh">'</span><span class="s">c = {c}</span><span class
 
 <h2 id="rsa1p2">[RSA1]P2</h2>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">Crypto.Util.number</span> <span class="kn">import</span> <span class="n">inverse</span><span class="p">,</span><span class="n">long_to_bytes</span>
+<div class="code-snippet" data-lang="python">
+  <div class="code-header">
+    <span class="file-name">main2.py</span>
+    <span class="copy-button" onclick="copyCode(this)">复制</span>
+  </div>
+  <pre><code class="language-python"><span class="kn">from</span> <span class="n">Crypto.Util.number</span> <span class="kn">import</span> <span class="n">inverse</span><span class="p">,</span><span class="n">long_to_bytes</span>
 <span class="sh">'''</span><span class="s">
 flag = b</span><span class="sh">'</span><span class="s">NSSCTF{******}</span><span class="sh">'</span><span class="s">
 p = getPrime(256)
@@ -104,8 +129,26 @@ print(f</span><span class="sh">'</span><span class="s">c = {c}</span><span class
 <span class="n">phi</span><span class="o">=</span><span class="p">(</span><span class="n">p</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">q</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">d</span> <span class="o">=</span> <span class="nf">inverse</span><span class="p">(</span><span class="n">e</span><span class="p">,</span><span class="n">phi</span><span class="p">)</span>
 <span class="n">m</span><span class="o">=</span><span class="nf">pow</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="nf">long_to_bytes</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
-</code></pre></div></div>
+<span class="nf">print</span><span class="p">(</span><span class="nf">long_to_bytes</span><span class="p">(</span><span class="n">m</span><span class="p">))</span></code></pre>
+  <div class="file-path" title="nssctf/一/main2.py">
+    <svg class="octicon" aria-hidden="true" width="12" height="12">
+      <use xlink:href="#file-icon" />
+    </svg>
+    nssctf/一/main2.py
+  </div>
+</div>
+<script>
+  function copyCode(btn) {
+    const codeBlock = btn.parentNode.nextElementSibling;
+    const range = document.createRange();
+    range.selectNode(codeBlock);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+    btn.textContent = '已复制!';
+    setTimeout(() => btn.textContent = '复制', 2000);
+  }
+</script>
 
 <p>n可分解:</p>
 
@@ -116,7 +159,12 @@ print(f</span><span class="sh">'</span><span class="s">c = {c}</span><span class
 
 <p>[RSA1]P3</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kn">from</span> <span class="n">Crypto.Util.number</span> <span class="kn">import</span> <span class="n">inverse</span><span class="p">,</span><span class="n">long_to_bytes</span>
+<div class="code-snippet" data-lang="python">
+  <div class="code-header">
+    <span class="file-name">main3.py</span>
+    <span class="copy-button" onclick="copyCode(this)">复制</span>
+  </div>
+  <pre><code class="language-python"><span class="kn">from</span> <span class="n">Crypto.Util.number</span> <span class="kn">import</span> <span class="n">inverse</span><span class="p">,</span><span class="n">long_to_bytes</span>
 <span class="n">flag</span> <span class="o">=</span> <span class="sa">b</span><span class="sh">'</span><span class="s">NSSCTF{******}</span><span class="sh">'</span>
 <span class="sh">'''</span><span class="s">
 p = getPrime(128)
@@ -140,15 +188,38 @@ print(f</span><span class="sh">'</span><span class="s">c = {c}</span><span class
 <span class="n">phi</span> <span class="o">=</span> <span class="p">(</span><span class="n">p</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">q</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">d</span> <span class="o">=</span> <span class="nf">inverse</span><span class="p">(</span><span class="n">e</span><span class="p">,</span><span class="n">phi</span><span class="p">)</span>
 <span class="n">m</span> <span class="o">=</span> <span class="nf">pow</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="nf">long_to_bytes</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
-</code></pre></div></div>
+<span class="nf">print</span><span class="p">(</span><span class="nf">long_to_bytes</span><span class="p">(</span><span class="n">m</span><span class="p">))</span></code></pre>
+  <div class="file-path" title="nssctf/一/main3.py">
+    <svg class="octicon" aria-hidden="true" width="12" height="12">
+      <use xlink:href="#file-icon" />
+    </svg>
+    nssctf/一/main3.py
+  </div>
+</div>
+<script>
+  function copyCode(btn) {
+    const codeBlock = btn.parentNode.nextElementSibling;
+    const range = document.createRange();
+    range.selectNode(codeBlock);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+    btn.textContent = '已复制!';
+    setTimeout(() => btn.textContent = '复制', 2000);
+  }
+</script>
 
 <p>n可分解</p>
 
 <p>[RSA1]P4</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">Crypto.Util.number</span> <span class="kn">import</span> <span class="n">inverse</span><span class="p">,</span><span class="n">long_to_bytes</span>
-<span class="kn">from</span> <span class="n">gmpy2</span> <span class="kn">import</span> <span class="n">isqrt</span>
+<div class="code-snippet" data-lang="python">
+  <div class="code-header">
+    <span class="file-name">main4.py</span>
+    <span class="copy-button" onclick="copyCode(this)">复制</span>
+  </div>
+  <pre><code class="language-python"><span class="kn">from</span> <span class="n">Crypto.Util.number</span> <span class="kn">import</span> <span class="n">inverse</span><span class="p">,</span><span class="n">long_to_bytes</span>
+<span class="kn">from</span> <span class="n">gmpy2</span> <span class="kn">import</span> <span class="n">isqrt</span><span class="p">,</span><span class="n">next_prime</span>
 <span class="sh">'''</span><span class="s">
 flag = b</span><span class="sh">'</span><span class="s">NSSCTF{******}</span><span class="sh">'</span><span class="s">
 p = getPrime(512)
@@ -171,8 +242,26 @@ print(f</span><span class="sh">'</span><span class="s">c = {c}</span><span class
 <span class="n">phi</span><span class="o">=</span><span class="p">(</span><span class="n">p</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">q</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">d</span> <span class="o">=</span> <span class="nf">inverse</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">phi</span><span class="p">)</span>
 <span class="n">m</span> <span class="o">=</span> <span class="nf">pow</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="nf">long_to_bytes</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
-</code></pre></div></div>
+<span class="nf">print</span><span class="p">(</span><span class="nf">long_to_bytes</span><span class="p">(</span><span class="n">m</span><span class="p">))</span></code></pre>
+  <div class="file-path" title="nssctf/一/main4.py">
+    <svg class="octicon" aria-hidden="true" width="12" height="12">
+      <use xlink:href="#file-icon" />
+    </svg>
+    nssctf/一/main4.py
+  </div>
+</div>
+<script>
+  function copyCode(btn) {
+    const codeBlock = btn.parentNode.nextElementSibling;
+    const range = document.createRange();
+    range.selectNode(codeBlock);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+    btn.textContent = '已复制!';
+    setTimeout(() => btn.textContent = '复制', 2000);
+  }
+</script>
 
 <p><code class="language-plaintext highlighter-rouge">p</code>,<code class="language-plaintext highlighter-rouge">q</code>接近</p>
 <ul>
@@ -183,36 +272,7 @@ print(f</span><span class="sh">'</span><span class="s">c = {c}</span><span class
   <li>常规RSA解法</li>
 </ul>
 
-<div class="code-snippet" data-lang="python">
-  <pre><code class="language-python">from Crypto.Util.number import inverse,long_to_bytes
-&#39;&#39;&#39;
-flag = b&#39;NSSCTF{******}&#39;
-p = getPrime(512)
-q = getPrime(512)
-n = p*q
-e = 65537
-phi = (p-1)*(q-1)
-m = bytes_to_long(flag)
-c = pow(m, e, n)
-print(f&#39;p = {p}&#39;)
-print(f&#39;q = {q}&#39;)
-print(f&#39;e = {e}&#39;)
-print(f&#39;c = {c}&#39;)
-&#39;&#39;&#39;
-p = 10554915510546378513140074459658086644656654144905337809416976066414771647836950941616441505897207397834928781511863699153349798682451297889979721668885951
-q = 8246403321715011123191410826902524505032643184038566851264109473851746507405534573077909160292816825514872584170252311902322051822644609979417178306809223
-e = 65537
-c = 40005881669517895877352756665523238535105922590962714344556374248977905431683140065629966778249773228248201807844489945346731806741025157651474530811920115794270396320935022110691338083709019538562205165553541077855422953438117902279834449006455379382431883650004540282758907332683496655914597029545677184720
-phi=(p-1)*(q-1)
-d = inverse(e,phi)
-n=p*q
-m = pow(c,d,n)
-flag = long_to_bytes(m)
-print(flag)</code></pre>
-  <div class="file-path">nssctf/一/main1.py</div>
-</div>
-
-
+      </div>
     </main>
     <footer>
         <p>&copy; 2025 版权所有</p>
