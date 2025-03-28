@@ -133,10 +133,9 @@ MathJax = {
 
 <h2 id="rsa1p1">[RSA1]P1</h2>
 
-<div class="code-snippet" data-lang="python">
+<div class="code-snippet">
   <div class="code-header">
     <span class="file-name">main1.py</span>
-    <span class="copy-button" onclick="copyCode(this)">复制</span>
   </div>
   <pre><code class="language-python">from Crypto.Util.number import inverse,long_to_bytes
 '''
@@ -163,22 +162,7 @@ n=p*q
 m = pow(c,d,n)
 flag = long_to_bytes(m)
 print(flag)</code></pre>
-  <div class="file-path" title="/home/ubuntu/Crypto/nssctf/一/main1.py">
-    <svg class="octicon" aria-hidden="true" width="12" height="12">
-      <use xlink:href="#file-icon" />
-    </svg>
-    ...tu/Crypto/nssctf/一/main1.py
-  </div>
 </div>
-<script>
-  function copyCode(btn) {
-    const codeBlock = btn.parentNode.nextElementSibling.querySelector('code');
-    navigator.clipboard.writeText(codeBlock.textContent).then(() => {
-      btn.textContent = '已复制!';
-      setTimeout(() => (btn.textContent = '复制'), 2000);
-    });
-  }
-</script>
 
 <p>常规RSA解法:</p>
 
@@ -191,10 +175,9 @@ print(flag)</code></pre>
 
 <h2 id="rsa1p2">[RSA1]P2</h2>
 
-<div class="code-snippet" data-lang="python">
+<div class="code-snippet">
   <div class="code-header">
     <span class="file-name">main2.py</span>
-    <span class="copy-button" onclick="copyCode(this)">复制</span>
   </div>
   <pre><code class="language-python">from Crypto.Util.number import inverse,long_to_bytes
 '''
@@ -221,22 +204,7 @@ phi=(p-1)*(q-1)
 d = inverse(e,phi)
 m=pow(c,d,n)
 print(long_to_bytes(m))</code></pre>
-  <div class="file-path" title="/home/ubuntu/Crypto/nssctf/一/main2.py">
-    <svg class="octicon" aria-hidden="true" width="12" height="12">
-      <use xlink:href="#file-icon" />
-    </svg>
-    ...tu/Crypto/nssctf/一/main2.py
-  </div>
 </div>
-<script>
-  function copyCode(btn) {
-    const codeBlock = btn.parentNode.nextElementSibling.querySelector('code');
-    navigator.clipboard.writeText(codeBlock.textContent).then(() => {
-      btn.textContent = '已复制!';
-      setTimeout(() => (btn.textContent = '复制'), 2000);
-    });
-  }
-</script>
 
 <p>n可分解:</p>
 
@@ -247,10 +215,9 @@ print(long_to_bytes(m))</code></pre>
 
 <p>[RSA1]P3</p>
 
-<div class="code-snippet" data-lang="python">
+<div class="code-snippet">
   <div class="code-header">
     <span class="file-name">main3.py</span>
-    <span class="copy-button" onclick="copyCode(this)">复制</span>
   </div>
   <pre><code class="language-python">from Crypto.Util.number import inverse,long_to_bytes
 flag = b'NSSCTF{******}'
@@ -277,31 +244,15 @@ phi = (p-1)*(q-1)
 d = inverse(e,phi)
 m = pow(c,d,n)
 print(long_to_bytes(m))</code></pre>
-  <div class="file-path" title="/home/ubuntu/Crypto/nssctf/一/main3.py">
-    <svg class="octicon" aria-hidden="true" width="12" height="12">
-      <use xlink:href="#file-icon" />
-    </svg>
-    ...tu/Crypto/nssctf/一/main3.py
-  </div>
 </div>
-<script>
-  function copyCode(btn) {
-    const codeBlock = btn.parentNode.nextElementSibling.querySelector('code');
-    navigator.clipboard.writeText(codeBlock.textContent).then(() => {
-      btn.textContent = '已复制!';
-      setTimeout(() => (btn.textContent = '复制'), 2000);
-    });
-  }
-</script>
 
 <p>n可分解</p>
 
 <p>[RSA1]P4</p>
 
-<div class="code-snippet" data-lang="python">
+<div class="code-snippet">
   <div class="code-header">
     <span class="file-name">main4.py</span>
-    <span class="copy-button" onclick="copyCode(this)">复制</span>
   </div>
   <pre><code class="language-python">from Crypto.Util.number import inverse,long_to_bytes
 from gmpy2 import isqrt,next_prime
@@ -328,22 +279,7 @@ phi=(p-1)*(q-1)
 d = inverse(e, phi)
 m = pow(c, d, n)
 print(long_to_bytes(m))</code></pre>
-  <div class="file-path" title="/home/ubuntu/Crypto/nssctf/一/main4.py">
-    <svg class="octicon" aria-hidden="true" width="12" height="12">
-      <use xlink:href="#file-icon" />
-    </svg>
-    ...tu/Crypto/nssctf/一/main4.py
-  </div>
 </div>
-<script>
-  function copyCode(btn) {
-    const codeBlock = btn.parentNode.nextElementSibling.querySelector('code');
-    navigator.clipboard.writeText(codeBlock.textContent).then(() => {
-      btn.textContent = '已复制!';
-      setTimeout(() => (btn.textContent = '复制'), 2000);
-    });
-  }
-</script>
 
 <p><code class="language-plaintext highlighter-rouge">p</code>,<code class="language-plaintext highlighter-rouge">q</code>接近</p>
 
