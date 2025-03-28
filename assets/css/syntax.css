@@ -214,4 +214,25 @@
 .highlight {
   color: #f8f8f2;
   background-color: #49483e;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+.highlight .c {
+  color: #75715e;
+  font-style: italic;
+}
+
+.highlight .k {
+  color: #66d9ef;
+  font-weight: bold;
+}
+
+.highlight .s {
+  color: #e6db74;
+}
+
+.highlight .f {
+  color: #a6e22e;
 }

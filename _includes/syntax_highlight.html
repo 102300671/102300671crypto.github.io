@@ -14,10 +14,20 @@
       overflow-x: auto;
       padding: 1rem;
     }
+  </style>
   {% elsif site.highlighter == 'pygments' %}
-    <!-- 针对pygments高亮器的样式设置，示例为空，需根据实际情况添加 -->
+  <!-- 针对pygments高亮器的样式设置，示例为空，需根据实际情况添加 -->
   {% endif %}
   </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('pre code').forEach((block) => {
+      hljs.highlightElement(block);
+    });
+  });
+</script>
 <script>
 MathJax = {
   tex: {
@@ -37,35 +47,47 @@ MathJax = {
 };
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-/* 代码块容器 */
-.code-snippet {
-  border: 1px solid #e1e4e8;
-  border-radius: 6px;
-  margin: 1em 0;
-}
+<style>
+  .code-snippet {
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    margin: 1em 0;
+  }
 
-/* 代码头部样式 */
-.code-header {
-  background: #f6f8fa;
-  padding: 8px 12px;
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid #e1e4e8;
-}
+  .code-header {
+    background: #f6f8fa;
+    padding: 8px 12px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #e1e4e8;
+  }
 
-/* 复制按钮样式 */
-.copy-button {
-  cursor: pointer;
-  color: #0366d6;
-}
-.copy-button:hover {
-  text-decoration: underline;
-}
+  .copy-button {
+    cursor: pointer;
+    color: #0366d6;
+  }
 
-/* 文件路径显示 */
-.file-path {
-  font-size: 0.85em;
-  color: #586069;
-  padding: 8px 12px;
-  border-top: 1px solid #e1e4e8;
-}
+  .copy-button:hover {
+    text-decoration: underline;
+  }
+
+  .file-path {
+    font-size: 0.85em;
+    color: #586069;
+    padding: 8px 12px;
+    border-top: 1px solid #e1e4e8;
+  }
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.copy-button').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const codeBlock = btn.parentNode.nextElementSibling.querySelector('code');
+        navigator.clipboard.writeText(codeBlock.textContent).then(() => {
+          btn.textContent = '已复制!';
+          setTimeout(() => (btn.textContent = '复制'), 2000);
+        });
+      });
+    });
+  });
+</script>

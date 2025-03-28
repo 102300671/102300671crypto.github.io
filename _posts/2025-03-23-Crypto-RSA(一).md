@@ -10,9 +10,7 @@ highlight: true
 
 ## [RSA1]P1
 
-{% raw %}{% highlight python linenos %}
 {% include_code "nssctf/一/main1.py" lang=python %}
-{% endhighlight %}{% endraw %}
 
 常规RSA解法:
 

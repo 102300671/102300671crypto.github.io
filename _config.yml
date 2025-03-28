@@ -31,7 +31,6 @@ github_username:  "102300671"
 theme: 
 plugins:
   - jekyll-feed
-  - jekyll-include-code
 
 markdown: kramdown
 highlighter: rouge

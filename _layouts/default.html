@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="{{ "/assets/css/default.css" | relative_url }}">
     <link rel="stylesheet" href="{{ "/assets/css/syntax.css" | relative_url }}">
     {% if page.highlight %}
-      {% include syntax-highlight.html %}
+      {% include syntax_highlight.html %}
     {% endif %}
-    {% if page.math %}  <!-- 条件加载 -->
+    {% if page.math %}
       {% include mathjax.html %}
     {% endif %}
 </head>
