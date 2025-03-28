@@ -31,6 +31,7 @@ github_username:  "102300671"
 theme: 
 plugins:
   - jekyll-feed
+  - include_code_tag
 plugins_dir: _plugins
 
 markdown: kramdown
