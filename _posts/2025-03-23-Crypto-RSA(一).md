@@ -10,7 +10,7 @@ highlight: true
 
 ## [RSA1]P1
 
-{% include_code "nssctf/一/main1.py" lang=python %}
+{% include_code nssctf/一/main1.py lang=python %}
 
 常规RSA解法:
 
@@ -21,7 +21,7 @@ highlight: true
 
 ## [RSA1]P2
 
-{% include_code "nssctf/一/main2.py" lang=python %}
+{% include_code nssctf/一/main2.py lang=python %}
 
 n可分解:
 
@@ -30,13 +30,13 @@ n可分解:
 
 [RSA1]P3
 
-{% include_code "nssctf/一/main3.py" lang=python %}
+{% include_code nssctf/一/main3.py lang=python %}
 
 n可分解
 
 [RSA1]P4
 
-{% include_code "nssctf/一/main4.py" lang=python %}
+{% include_code nssctf/一/main4.py lang=python %}
 
 `p`,`q`接近
 
