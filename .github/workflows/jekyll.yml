@@ -21,7 +21,7 @@ jobs:
     - name: Setup Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.1  # 使用支持 Jekyll 的 Ruby 版本
+        ruby-version: 3.4.2  # 更新后的 Ruby 版本
         bundler-cache: true
 
     # 安装依赖
