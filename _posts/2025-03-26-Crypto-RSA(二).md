@@ -10,7 +10,7 @@ highlight: true
 
 ## [RSA2]P1
 
-{% include_code nssctf/二/main1.py lang=python %}
+{% include_code "nssctf/二/main1.py" lang=python %}
 
 n很小:
 
