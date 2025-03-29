@@ -3,14 +3,15 @@ layout: default
 title: Crypto-RSA(二)
 math: true
 math_type: svg
-highlight: true
 ---
 
 ## nssctf
 
 ## [RSA2]P1
 
-{% include_code "nssctf/二/main1.py" lang=python %}
+{% highlight python linenos %}
+{% include code/nssctf/2/main1.py %}
+{% endhighlight %}
 
 n很小:
 

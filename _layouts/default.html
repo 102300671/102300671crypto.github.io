@@ -6,11 +6,8 @@
     <title>{{ page.title }}</title>
     <link rel="stylesheet" href="{{ "/assets/css/default.css" | relative_url }}">
     <link rel="stylesheet" href="{{ "/assets/css/syntax.css" | relative_url }}">
-    {% if page.highlight %}
-      {% include syntax_highlight.html %}
-    {% endif %}
     {% if page.math %}
-      {% include mathjax.html %}
+      {% include html/mathjax.html %}
     {% endif %}
 </head>
 <body>
