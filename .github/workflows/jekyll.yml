@@ -9,6 +9,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # 允许写入内容
     env:
       JEKYLL_ENV: production  # 生产环境配置
     
