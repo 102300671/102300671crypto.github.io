@@ -30,7 +30,7 @@ jobs:
     - name: Setup Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.2.2  # 推荐稳定版本
+        ruby-version: 3.4.2  # 推荐稳定版本
         bundler-cache: true
         cache-version: 2  # 缓存版本控制
 
