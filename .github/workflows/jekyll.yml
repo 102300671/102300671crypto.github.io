@@ -2,39 +2,55 @@ name: Build and Deploy Jekyll Site
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
   pull_request:
-    branches:
-      - main
+    branches: [ "main" ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    env:
+      JEKYLL_ENV: production  # 生产环境配置
+    
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4  # 升级到最新版
+      with:
+        fetch-depth: 0  # 获取完整提交历史
+
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: |
+          vendor/bundle
+          node_modules
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: ${{ runner.os }}-gems-
 
     - name: Setup Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.4.2
+        ruby-version: 3.2.2  # 推荐稳定版本
         bundler-cache: true
+        cache-version: 2  # 缓存版本控制
 
     - name: Install dependencies
       run: |
-        bundle install
+        bundle config path vendor/bundle  # 本地依赖隔离
+        bundle install --jobs 4 --retry 3 --without development  # 生产环境优化
 
-    - name: Build Jekyll site
-      env:
-        JEKYLL_ENV: production  # 启用生产环境
+    - name: Build with Jekyll
       run: |
-        bundle exec jekyll build
-        
+        bundle exec jekyll build --trace --strict_front_matter  # 严格格式检查
+        echo "处理自定义域名"  # 根据网页14建议添加
+        if [ -f CNAME ]; then cp CNAME _site/; fi
 
     - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
+      uses: peaceiris/actions-gh-pages@v4  # 升级到最新版
       with:
-        personal_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}  # 改用官方Token
         publish_dir: ./_site
+        keep_files: true  # 保留历史文件
+        force_orphan: false
+        user_name: "GitHub Actions"
+        user_email: "41898282+github-actions[bot]@users.noreply.github.com"

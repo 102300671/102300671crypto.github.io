@@ -1,6 +1,7 @@
 module Jekyll
   class IncludeCode < Liquid::Tag
     SYNTAX = %r!^(\S+)(?:\s+lang=(\w+))?(?:\s+lines=(\d+-\d+))?$!
+    # _plugins/include_code.rb
     DEFAULT_ALLOWED_PATHS = %w[nssctf/一 nssctf/二 assets/attachments/].freeze
 
     def initialize(tag_name, markup, tokens)
