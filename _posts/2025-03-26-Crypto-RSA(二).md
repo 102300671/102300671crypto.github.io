@@ -17,4 +17,4 @@ n很小:
 
 - 低加密指数攻击
 - `m`可能满足$m^e<n$时有
-- 此时$c=m^e$,$m=\sqrt(c,e)$(开方用`gmpy2`的`iroot`)
+- 此时$c=m^e$,$\text{m}=\sqrt{c,e}$(开方用`gmpy2`的`iroot`)
