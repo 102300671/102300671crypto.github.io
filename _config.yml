@@ -31,8 +31,6 @@ github_username:  "102300671"
 theme: 
 plugins:
   - jekyll-feed
-plugins_dir: _plugins
-encoding: utf-8
 
 markdown: kramdown
 highlighter: rouge
@@ -51,7 +49,6 @@ kramdown:
     preview: false  # 禁用公式预览
     tex_input: full  # 完整TeX语法支持
 
-safe: false
   
 
 # Exclude from processing.
