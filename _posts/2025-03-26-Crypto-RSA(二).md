@@ -42,6 +42,26 @@ Rabin:
 
 加密
 
-- 选两个大素数$p$ 和$q$(通常取$p \equiv q \equiv 3 \pmod{4}$)
-- 计算$n=p \times q$,公钥:$n$,私钥:$(p,q)$
+- 选两个大素数$p$ 和$q$(通常取$p\equiv q\equiv 3 \pmod{4}$)
+- 计算$n=p\times q$,公钥:$n(通常为2)$,私钥:$(p,q)$
 - 明文$m<n$时,密文$c=m^2 \pmod{n}$
+
+解密
+
+- 计算$p1=c^\frac{p+1}{4} \pmod{p}$
+- 计算$q1=c^\frac{q+1}{4}\pmod{q}$
+- 通过`CRT`组合四个可能解
+  - $m=\pm p1\pmod{p}$
+  - $m=\pm q1\pmod{q}$
+
+### [RSA2]P4
+
+{% highlight python linenos %}
+{% include code/nssctf/2/main4.py %}
+{% endhighlight %}
+
+维纳攻击
+
+- $d$较小时($d<\frac{1}{3}n^\frac{1}{4}$)
+- 对$\frac{e}{n}$进行连分数展开，其收敛分数的分母可能是$d$
+- 检查$d$，符合条件解
