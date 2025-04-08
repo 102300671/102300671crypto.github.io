@@ -65,3 +65,21 @@ Rabin:
 - $d$较小时($d<\frac{1}{3}n^\frac{1}{4}$)
 - 对$\frac{e}{n}$进行连分数展开，其收敛分数的分母可能是$d$
 - 检查$d$，符合条件解
+
+### [RSA3]P5
+
+{% highlight python linenos %}
+{% include code/nssctf/2/main5.py %}
+{% endhight %}
+
+低加密指数广播攻击
+
+- $e=127$,不是很大
+- nc连接上后可以获取n和c且有多组
+- 中国剩余定理
+
+### [RSA4]P6
+
+p-1光滑
+
+- 啊
