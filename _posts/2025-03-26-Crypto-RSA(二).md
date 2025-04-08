@@ -70,7 +70,7 @@ Rabin:
 
 {% highlight python linenos %}
 {% include code/nssctf/2/main5.py %}
-{% endhight %}
+{% endhighlight %}
 
 低加密指数广播攻击
 
@@ -83,3 +83,4 @@ Rabin:
 p-1光滑
 
 - 啊
+{% include code/html/a.html %}
