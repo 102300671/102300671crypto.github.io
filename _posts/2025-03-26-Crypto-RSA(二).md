@@ -80,7 +80,14 @@ Rabin:
 
 ### [RSA4]P6
 
+{% highlight python linenos %}
+{% include code/nssctf/2/main6.py %}
+{% endhighlight %}
+
 p-1光滑
 
-- 啊
+- **光滑数**:若一个整数$n$的素因子均 $\leq B$，则称$n$为**B-光滑数**。
+- **p-1光滑的意义**:
+   当`p`是一个素数且`p-1`是 B-光滑时，意味着`p-1` 可以分解为一系列小素数的乘积。
+- `Pollard's p-1`算法  
 {% include code/html/a.html %}
