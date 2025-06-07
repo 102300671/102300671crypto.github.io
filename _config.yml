@@ -49,7 +49,7 @@ kramdown:
     preview: false  # 禁用公式预览
     tex_input: full  # 完整TeX语法支持
 
-  
+media: https://gh-proxy.com/raw.githubusercontent.com/102300671/media/main
 
 # Exclude from processing.
 # The following items will not be processed, by default.
